@@ -1,0 +1,18 @@
+name: transcribe-fr
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - ffmpeg
+  - pip
+  - pip:
+      - --index-url https://download.pytorch.org/whl/cpu
+      - torch==2.8.0
+      - torchaudio==2.8.0
+      - torchvision==0.23.0
+      - --extra-index-url https://pypi.org/simple
+      - faster-whisper
+      - pyannote.audio==4.0.3
+      - tqdm
+      - huggingface_hub
+      - sentencepiece

@@ -1,0 +1,11 @@
+# Environment variables
+.env
+
+# Jupyter notebooks
+*.ipynb
+
+# Interview files (adjust pattern if needed)
+interviews/
+Interview*.mp4
+Interview*.txt
+Interview*.json
