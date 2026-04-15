@@ -10,6 +10,8 @@ import json
 import tempfile
 import logging
 from datetime import datetime
+import numpy as np
+import soundfile as sf
 
 HF_TOKEN = os.getenv("HF_TOKEN")
 
@@ -70,13 +72,16 @@ def extract_audio_to_wav(input_path: str) -> str:
 
 
 def load_audio_for_pyannote(path: str):
-    waveform, sample_rate = torchaudio.load(path)
 
-    if waveform.dim() == 1:
-        waveform = waveform.unsqueeze(0)
+    waveform, sample_rate = sf.read(path)
+
+    if len(waveform.shape) == 1:
+        waveform = waveform[np.newaxis, :]
+    else:
+        waveform = waveform.T # (channels, time)
 
     return {
-        "waveform": waveform,
+        "waveform": torch.tensor(waveform, dtype=torch.float32),
         "sample_rate": sample_rate
     }
 

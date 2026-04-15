@@ -1,5 +1,6 @@
 # Environment variables
 .env
+.env*
 
 # Jupyter notebooks
 *.ipynb
@@ -9,3 +10,6 @@ interviews/
 Interview*.mp4
 Interview*.txt
 Interview*.json
+
+# .py backup files
+*-checkpoint.py
